@@ -8,7 +8,7 @@ mealSearchBtn.addEventListener('click', function() {
         .then(data => showMealsitem(data.meals[0]))
         .catch(function() {
             const notFound = document.getElementById('notFound');
-            htmlTemplate = `
+            const htmlTemplate = `
                 <div class="alert alert-danger" role="alert">
                     Meal Item: <b>${mealName}</b> Not Found. check it out!
                 </div>`;
@@ -36,5 +36,19 @@ showMealsitem = meals => {
 
 const mealItemDetails = mealid => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`;
+
     console.log(url);
+    fetch(url)
+        .then(res => res.json())
+        .then(data => mealItemDetailsDiv(data.meals[0]))
+        .catch(function() {
+            console.log("error");
+        });
+};
+const mealItemDetailsDiv = details => {
+    console.log(details);
+    const mealdetails = document.getElementById('mealItemdetails');
+    const htmlTemplate = `
+    `;
+
 };
