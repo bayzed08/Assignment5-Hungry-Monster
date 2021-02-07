@@ -19,12 +19,19 @@
     border-radius: 20px;
     padding: 10px;
     margin: 20px;
-    text-align: center;
+    text-align: left;
     box-shadow: 5px 5px 30px gray;
+    overflow: scroll;
 }
 
 #mealItemdetails img {
     width: 500px;
     border: 2px soild bisque;
     border-radius: 20px;
+    text-align: center;
 }
+
+
+/* .font-p-ingredeient>ul>li {
+    font-size: 10px;
+} */

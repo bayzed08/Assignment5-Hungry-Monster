@@ -62,15 +62,22 @@ const mealItemDetailsDiv = details => {
     console.log(details);
     mealdiv.classList.add('d-none');
     mealdetails.classList.remove('d-none');
+    console.log(Array.from('${details}'));
     const htmlTemplate = `
     <div>
         <img src="${details.strMealThumb}" alt="" /><br />
         <h3>${details.strMeal}</h3>
-        <p>
-            <ul>Ingredients
-            <li>${details.strIngredient1}</li>
-            </ul>
-        </p>
+        <h4 class="display-4">Ingredients</h4>
+        <li class="small">${details.strIngredient1}</li>
+        <li class="small">${details.strIngredient2}</li>
+        <li class="small">${details.strIngredient3}</li>
+        <li class="small">${details.strIngredient4}</li>
+        <li class="small">${details.strIngredient5}</li>
+        <li class="small">${details.strIngredient6}</li>
+        <li class="small">${details.strIngredient7}</li>
+        <li class="small">${details.strIngredient8}</li>
+        <li class="small">${details.strIngredient9}</li>
+        <li class="small">${details.strIngredient10}</li>
     </div>
     `;
     mealdetails.innerHTML = htmlTemplate;
