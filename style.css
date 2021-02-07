@@ -6,7 +6,7 @@
 }
 
 .mealsItemdivCss {
-    border: 1px solid goldenrod;
+    border: 1px solid rgb(235, 231, 221);
     border-radius: 10px;
     margin: 5px;
     padding: 5px;
@@ -15,17 +15,19 @@
 }
 
 #mealItemdetails {
-    border: 2px solid rebeccapurple;
+    border: 2px solid gray;
     border-radius: 20px;
     padding: 10px;
     margin: 20px;
-    text-align: left;
     box-shadow: 5px 5px 30px gray;
-    overflow: scroll;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
 }
 
 #mealItemdetails img {
-    width: 500px;
+    width: 400px;
+    height: 300px;
     border: 2px soild bisque;
     border-radius: 20px;
     text-align: center;

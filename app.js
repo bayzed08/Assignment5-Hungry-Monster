@@ -9,6 +9,7 @@ mealSearchBtn.addEventListener('click', function() {
     mealdiv.innerHTML = '';
     mealdetails.innerHTML = '';
     mealdiv.classList.add('d-none');
+    mealdetails.className = '';
     mealdetails.classList.add('d-none');
 
     const mealName = document.getElementById('meal-Name').value;
@@ -16,7 +17,8 @@ mealSearchBtn.addEventListener('click', function() {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => showMealsitem(data.meals[0]))
+        .then(data => showMealsItem(data.meals[0]))
+        //if item not found in API
         .catch(function() {
             const notFound = document.getElementById('notFound');
             const htmlTemplate = `
@@ -24,7 +26,6 @@ mealSearchBtn.addEventListener('click', function() {
                     Meal Item: <b>${mealName}</b> Not Found. check it out!
                 </div>`;
             notFound.innerHTML = htmlTemplate;
-            // notFound.fadeIn(3000).fadeOut(2000);
             setInterval(() => {
                 notFound.innerHTML = "";
             }, 4000);
@@ -32,25 +33,21 @@ mealSearchBtn.addEventListener('click', function() {
 });
 
 
-
-showMealsitem = meals => {
-    console.log(meals);
-
+//function Shows only meal item div
+const showMealsItem = meals => {
     mealdiv.className = 'mealsItemdivCss';
+    // clicking meal Item DIV go meal details through mealItemDetails() function
     const htmlTemplate = `
         <div onclick="mealItemDetails('${meals.idMeal}')">
             <img class="meal-image" src="${meals.strMealThumb}" alt="" srcset="">
             <h5 class="mealtitle">${meals.strMeal}</h5>
-        </div>  
-`;
+        </div>`;
     mealdiv.innerHTML = htmlTemplate;
 };
 
 
 const mealItemDetails = mealid => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`;
-
-    console.log(url);
     fetch(url)
         .then(res => res.json())
         .then(data => mealItemDetailsDiv(data.meals[0]))
@@ -62,7 +59,7 @@ const mealItemDetailsDiv = details => {
     console.log(details);
     mealdiv.classList.add('d-none');
     mealdetails.classList.remove('d-none');
-    console.log(Array.from('${details}'));
+    mealdetails.className='d-flex justify-content-center';
     const htmlTemplate = `
     <div>
         <img src="${details.strMealThumb}" alt="" /><br />
@@ -78,8 +75,7 @@ const mealItemDetailsDiv = details => {
         <li class="small">${details.strIngredient8}</li>
         <li class="small">${details.strIngredient9}</li>
         <li class="small">${details.strIngredient10}</li>
-    </div>
-    `;
+    </div>`;
     mealdetails.innerHTML = htmlTemplate;
 
 };
