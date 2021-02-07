@@ -8,16 +8,18 @@ mealSearchBtn.addEventListener('click', function() {
 
     mealdiv.innerHTML = '';
     mealdetails.innerHTML = '';
+    mealdiv.className = '';
     mealdiv.classList.add('d-none');
     mealdetails.className = '';
     mealdetails.classList.add('d-none');
 
     const mealName = document.getElementById('meal-Name').value;
     console.log(mealName);
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=%${mealName}%`;
+    console.log(url);
     fetch(url)
         .then(res => res.json())
-        .then(data => showMealsItem(data.meals[0]))
+        .then(data => showMealsItem(data.meals))
         //if item not found in API
         .catch(function() {
             const notFound = document.getElementById('notFound');
@@ -33,16 +35,31 @@ mealSearchBtn.addEventListener('click', function() {
 });
 
 
-//function Shows only meal item div
+//function Shows only meal item div using for each
 const showMealsItem = meals => {
     mealdiv.className = 'mealsItemdivCss';
+    console.log(meals);
+    let preHTML = mealdiv.innerHTML;
     // clicking meal Item DIV go meal details through mealItemDetails() function
-    const htmlTemplate = `
-        <div onclick="mealItemDetails('${meals.idMeal}')">
-            <img class="meal-image" src="${meals.strMealThumb}" alt="" srcset="">
-            <h5 class="mealtitle">${meals.strMeal}</h5>
-        </div>`;
-    mealdiv.innerHTML = htmlTemplate;
+    meals.forEach(meal => {
+        const htmlTemplate = `
+             <div class="mealItem" onclick="mealItemDetails('${meal.idMeal}')">
+                 <img class="meal-image" src="${meal.strMealThumb}" alt="" srcset="">
+                 <h5 class="mealtitle">${meal.strMeal}</h5>
+             </div>`;
+             preHTML = preHTML + htmlTemplate;
+    });
+    // for (let i = 0; i < meals.length; i++) {
+    //     const meal = meals[i];
+    //     const htmlTemplate = `
+    //     <div class="mealItem" onclick="mealItemDetails('${meal.idMeal}')">
+    //         <img class="meal-image" src="${meal.strMealThumb}" alt="" srcset="">
+    //         <h5 class="mealtitle">${meal.strMeal}</h5>
+    //     </div>`;
+    //     preHTML = preHTML + htmlTemplate;
+
+    // }
+    mealdiv.innerHTML = preHTML;
 };
 
 

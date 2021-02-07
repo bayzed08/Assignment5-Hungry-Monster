@@ -2,24 +2,34 @@
     width: 300px;
     height: 200px;
     border-radius: 10px;
-    border: 2px soild burlywood;
+    /* //border: 2px soild burlywood; */
+    border: 4px soild black;;
 }
 
 .mealsItemdivCss {
-    border: 1px solid rgb(235, 231, 221);
-    border-radius: 10px;
-    margin: 5px;
-    padding: 5px;
+    background-color: gainsboro;
+    margin: 10px;
+    padding: 10px;
     text-align: center;
     cursor: pointer;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 15px;
+    justify-content: center;
+}
+
+.mealItem{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(175, 166, 166);
 }
 
 #mealItemdetails {
-    border: 2px solid gray;
+    border: 2px solid rgb(248, 245, 245);
     border-radius: 20px;
     padding: 10px;
     margin: 20px;
-    box-shadow: 5px 5px 30px gray;
+    box-shadow: 1px 1px 30px rgb(250, 250, 250);
     overflow: hidden;
     justify-content: center;
     align-items: center;
