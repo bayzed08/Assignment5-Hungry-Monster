@@ -15,7 +15,7 @@ mealSearchBtn.addEventListener('click', function() {
 
     const mealName = document.getElementById('meal-Name').value;
     console.log(mealName);
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=%${mealName}%`;
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
     console.log(url);
     fetch(url)
         .then(res => res.json())
