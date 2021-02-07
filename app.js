@@ -1,5 +1,16 @@
+//meal item and item details DIV
+const mealdiv = document.getElementById('mealsItemdiv');
+const mealdetails = document.getElementById('mealItemdetails');
+
+
 const mealSearchBtn = document.getElementById('meal-SearchBtn');
 mealSearchBtn.addEventListener('click', function() {
+
+    mealdiv.innerHTML = '';
+    mealdetails.innerHTML = '';
+    mealdiv.classList.add('d-none');
+    mealdetails.classList.add('d-none');
+
     const mealName = document.getElementById('meal-Name').value;
     console.log(mealName);
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
@@ -20,9 +31,11 @@ mealSearchBtn.addEventListener('click', function() {
         });
 });
 
+
+
 showMealsitem = meals => {
     console.log(meals);
-    const mealdiv = document.getElementById('mealsItemdiv');
+
     mealdiv.className = 'mealsItemdivCss';
     const htmlTemplate = `
         <div onclick="mealItemDetails('${meals.idMeal}')">
@@ -47,8 +60,19 @@ const mealItemDetails = mealid => {
 };
 const mealItemDetailsDiv = details => {
     console.log(details);
-    const mealdetails = document.getElementById('mealItemdetails');
+    mealdiv.classList.add('d-none');
+    mealdetails.classList.remove('d-none');
     const htmlTemplate = `
+    <div>
+        <img src="${details.strMealThumb}" alt="" /><br />
+        <h3>${details.strMeal}</h3>
+        <p>
+            <ul>Ingredients
+            <li>${details.strIngredient1}</li>
+            </ul>
+        </p>
+    </div>
     `;
+    mealdetails.innerHTML = htmlTemplate;
 
 };

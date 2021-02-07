@@ -1,5 +1,6 @@
 #mealsItemdiv img {
     width: 300px;
+    height: 200px;
     border-radius: 10px;
     border: 2px soild burlywood;
 }
@@ -11,4 +12,19 @@
     padding: 5px;
     text-align: center;
     cursor: pointer;
+}
+
+#mealItemdetails {
+    border: 2px solid rebeccapurple;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 20px;
+    text-align: center;
+    box-shadow: 5px 5px 30px gray;
+}
+
+#mealItemdetails img {
+    width: 500px;
+    border: 2px soild bisque;
+    border-radius: 20px;
 }
