@@ -14,13 +14,11 @@ mealSearchBtn.addEventListener('click', function() {
     mealdetails.classList.add('d-none');
 
     const mealName = document.getElementById('meal-Name').value;
-    console.log(mealName);
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
-    console.log(url);
     fetch(url)
         .then(res => res.json())
         .then(data => showMealsItem(data.meals))
-        //if item not found in API
+        //if meals not found in API
         .catch(function() {
             const notFound = document.getElementById('notFound');
             const htmlTemplate = `
@@ -38,7 +36,6 @@ mealSearchBtn.addEventListener('click', function() {
 //function Shows only meal item div using for each
 const showMealsItem = meals => {
     mealdiv.className = 'mealsItemdivCss';
-    console.log(meals);
     let preHTML = mealdiv.innerHTML;
     // clicking meal Item DIV go meal details through mealItemDetails() function
     meals.forEach(meal => {
@@ -62,7 +59,7 @@ const showMealsItem = meals => {
     mealdiv.innerHTML = preHTML;
 };
 
-
+// For Single meal Item details
 const mealItemDetails = mealid => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`;
     fetch(url)
@@ -73,7 +70,6 @@ const mealItemDetails = mealid => {
         });
 };
 const mealItemDetailsDiv = details => {
-    console.log(details);
     mealdiv.classList.add('d-none');
     mealdetails.classList.remove('d-none');
     mealdetails.className='d-flex justify-content-center';
