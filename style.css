@@ -1,0 +1,13 @@
+#mealsItemdiv img {
+    width: 300px;
+    border-radius: 10px;
+    border: 2px soild burlywood;
+}
+
+.mealsItemdivCss {
+    border: 1px solid goldenrod;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}
